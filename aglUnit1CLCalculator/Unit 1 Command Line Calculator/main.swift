@@ -21,16 +21,18 @@ var operations: ([String: (Double, Double) -> Double]) =
 // prompt the user to enter operation with example (e.g. 5 + 3) and store the input in a variable
 
 class operationsValues {
-    //var operate: [String:(Double,Double) -> Double]
-    //    init(operate: [String:(Double,Double) -> Double]) {
-    //        self.operate = operate
-    //    }
     
     func gimmeResult(operator chosenOp: String, firstNum num1: Double, secondNum num2: Double) -> Double {
         
         switch chosenOp {
         case "+":
             return (num1 + num2)
+        case "-":
+            return (num1 - num2)
+        case "*":
+            return (num1 * num2)
+        case "/":
+            return (num1 / num2)
         default:
             return 0.00
         }
@@ -38,7 +40,6 @@ class operationsValues {
 }
 
 let test1 = operationsValues()
-print(test1.gimmeResult(operator: "+", firstNum: 5.0, secondNum: 3.3))
-
+print(test1.gimmeResult(operator: "%", firstNum: 5.0, secondNum: 3.3))
 
 
