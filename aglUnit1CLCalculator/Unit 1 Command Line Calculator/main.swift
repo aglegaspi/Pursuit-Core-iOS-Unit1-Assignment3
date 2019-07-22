@@ -21,17 +21,18 @@ var operations: ([String: (Double, Double) -> Double]) =
 // prompt the user to enter operation with example (e.g. 5 + 3) and store the input in a variable
 
 class operationsValues {
-    var operate: [String:(Double, Double)]()
- 
-    init(operate: [String:(Double, Double)]) {
+    var operate: [String:(Double,Double)]
+    
+    init(operate: [String:(Double,Double)]) {
         self.operate = operate
+    }
+    
+    func printTest() {
+        print(operate)
     }
 }
 
-func testingValues(_ operation: operationsValues) -> Double {
-    return operations
-}
-
-testingValues(operation)
+let test1 = operationsValues(operate: ["+":(3.3,5.5)])
+test1.printTest()
 
 
