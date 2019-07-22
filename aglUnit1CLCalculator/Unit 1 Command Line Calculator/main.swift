@@ -73,7 +73,11 @@ class operationsValues {
     }
     
     func gimmeResult() {
-        print(operateThis)
+        //print(operateThis)
+        for (key,value) in operateThis {
+            print(key, value.0, value.1)
+        }
+        
     }
 }
 
