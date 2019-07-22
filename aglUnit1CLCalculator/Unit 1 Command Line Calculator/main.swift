@@ -72,14 +72,29 @@ class operationsValues {
         self.operateThis = operateThis
     }
     
-    func gimmeResult() {
-        //print(operateThis)
-        for (key,value) in operateThis {
-            print(key, value.0, value.1)
-        }
+    func gimmeResult() -> Double {
+        var output = 0.00
         
+        for (key,value) in operateThis {
+            
+            switch key {
+            case "+":
+                output = (value.0 + value.1)
+            case "-":
+                output = (value.0 - value.1)
+            case "*":
+                output = (value.0 * value.1)
+            case "/":
+                output = (value.0 / value.1)
+            default:
+                output = 0.00
+            }
+            
+        }
+        return output
     }
+    
 }
 
 let myTest = operationsValues(operateThis: myDictionary)
-myTest.gimmeResult()
+print(myTest.gimmeResult())
