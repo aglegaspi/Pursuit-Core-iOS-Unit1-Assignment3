@@ -6,11 +6,11 @@
 
 import Foundation
 
-var operations: ([String: (Double, Double) -> Double]) =
-    ["+": { $0 + $1 },
-     "-": { $0 - $1 },
-     "*": { $0 * $1 },
-     "/": { $0 / $1 }]
+//var operations: ([String: (Double, Double) -> Double]) =
+//    ["+": { $0 + $1 },
+//     "-": { $0 - $1 },
+//     "*": { $0 * $1 },
+//     "/": { $0 / $1 }]
 
 // Incorporate operations into a command line application.
 // Parse input from the user into operator
@@ -20,36 +20,33 @@ var operations: ([String: (Double, Double) -> Double]) =
 // Reject non-conforming ops with a message.
 // prompt the user to enter operation with example (e.g. 5 + 3) and store the input in a variable
 
-
-//    switch chosenOp {
-//    case "+":
-//        return (num1 + num2)
-//    case "-":
-//        return (num1 - num2)
-//    case "*":
-//        return (num1 * num2)
-//    case "/":
-//        return (num1 / num2)
-//    default:
-//        return 0.00
-//    }
-
-//let test1 = operationsValues()
-//print(test1.gimmeResult(operator: "%", firstNum: 5.0, secondNum: 3.3))
-
-// testing an input with a for loop to generate the requested values
-
-let myInput = "5 + 3"
+var userInput = String()
 var myStringValue = ""
 var num1 = ""
 var num2 = ""
 
-
-if myInput.contains("+") {
-    myStringValue = "+"
+if let userInput = readLine() {
+    
+    if userInput.contains("+") {
+        myStringValue = "+"
+    }
+    
+    if userInput.contains("-") {
+        myStringValue = "-"
+    }
+    
+    if userInput.contains("*") {
+        myStringValue = "*"
+    }
+    
+    if userInput.contains("/") {
+        myStringValue = "/"
+    }
+    
 }
 
-for (index, value) in myInput.enumerated() {
+
+for (index, value) in userInput.enumerated() {
     if index == 0 {
         num1 = String(value)
     }
@@ -58,8 +55,8 @@ for (index, value) in myInput.enumerated() {
     }
 }
 
-var tupleOne = Double(num1)!
-var tupleTwo = Double(num2)!
+var tupleOne = Double(num1)
+var tupleTwo = Double(num2)
 
 var myDictionary = [myStringValue: (tupleOne,tupleTwo)]
 print(myDictionary)
@@ -73,11 +70,12 @@ class operationsValues {
     }
     
     func gimmeResult() -> Double {
-        var output = 0.00
+        var output = Double()
         
         for (key,value) in operateThis {
             
             switch key {
+                
             case "+":
                 output = (value.0 + value.1)
             case "-":
@@ -86,8 +84,9 @@ class operationsValues {
                 output = (value.0 * value.1)
             case "/":
                 output = (value.0 / value.1)
+                
             default:
-                output = 0.00
+                output = 0.0
             }
             
         }
@@ -96,5 +95,5 @@ class operationsValues {
     
 }
 
-let myTest = operationsValues(operateThis: myDictionary)
+let myTest = operationsValues(operateThis: myDictionary as! [String : (Double, Double)])
 print(myTest.gimmeResult())
