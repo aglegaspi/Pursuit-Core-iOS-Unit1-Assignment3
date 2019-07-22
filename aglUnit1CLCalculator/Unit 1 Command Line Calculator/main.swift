@@ -42,4 +42,27 @@ class operationsValues {
 let test1 = operationsValues()
 print(test1.gimmeResult(operator: "%", firstNum: 5.0, secondNum: 3.3))
 
+// testing an input with a for loop to generate the requested values
 
+let myInput = "5 + 3"
+var myStringValue = ""
+var myTupleZero = ""
+var myTupleOne = ""
+
+
+if myInput.contains("+") {
+    myStringValue = "+"
+}
+
+for (index, value) in myInput.enumerated() {
+    if index == 0 {
+        myTupleZero = String(value)
+    }
+    if index == 4 {
+        myTupleOne = String(value)
+    }
+}
+
+var myTuple = [myStringValue: (myTupleZero,myTupleOne)]
+
+print(myTuple)
