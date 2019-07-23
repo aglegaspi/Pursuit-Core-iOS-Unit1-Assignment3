@@ -8,7 +8,8 @@ import Foundation
 
 // readLine() source: https://www.journaldev.com/19612/swift-readline-swift-print
 
-print("Enter operation with example (e.g. 5 + 3):") //, terminator: " ")
+print("ALEX'S 🤓 CALCULATOR")
+print("Enter operation (e.g. 5 + 3) -or- type 'quit' to exit") //, terminator: " ")
 
 while let input = readLine() {
     
@@ -17,9 +18,6 @@ while let input = readLine() {
     }
     
     let inputArray: Array? = input.split {$0 == " "}.map(String.init)
-    //var userOperator = ""
-    //var numOne: Double
-    //var numTwo: Double
 
     if let numOne = inputArray?[0], let userOperator = inputArray?[1], let numTwo = inputArray?[2] {
         
@@ -47,7 +45,7 @@ while let input = readLine() {
                             case "/":
                                 print(value.0 / value.1)
                             default:
-                                print("You can only use +, *, -, / as operators. Thank you!")
+                                print("🛑 You can only use +, *, -, / as operators. Thank you!")
                         }
                     }
                 
@@ -60,6 +58,6 @@ while let input = readLine() {
         }
         
     }
-
-
+    print("")
+    print("Enter operation (e.g. 5 + 3) -or- type 'quit' to exit") //, terminator: " ")
 }
