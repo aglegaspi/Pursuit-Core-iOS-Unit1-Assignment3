@@ -14,7 +14,13 @@ print("Enter operation (e.g. 5 + 3) -or- type 'quit' to exit") //, terminator: "
 while let input = readLine() {
     
     guard input != "quit" else {
+        print("✌🏽 Thank you buh bye now!")
         break
+    }
+    
+    if !input.contains(" ") {
+        print("you must use spaces! (e.g. 5 + 3)")
+        continue
     }
     
     let inputArray: Array? = input.split {$0 == " "}.map(String.init)
