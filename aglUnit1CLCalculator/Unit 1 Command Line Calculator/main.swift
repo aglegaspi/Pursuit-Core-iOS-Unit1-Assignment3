@@ -20,80 +20,55 @@ import Foundation
 // Reject non-conforming ops with a message.
 // prompt the user to enter operation with example (e.g. 5 + 3) and store the input in a variable
 
-var userInput = String()
-var myStringValue = ""
-var num1 = ""
-var num2 = ""
+print("Enter operation with example (e.g. 5 + 3):") //, terminator: " ")
 
-if let userInput = readLine() {
-    
-    if userInput.contains("+") {
-        myStringValue = "+"
-    }
-    
-    if userInput.contains("-") {
-        myStringValue = "-"
-    }
-    
-    if userInput.contains("*") {
-        myStringValue = "*"
-    }
-    
-    if userInput.contains("/") {
-        myStringValue = "/"
-    }
-    
-}
+let inputArray = readLine()?.split {$0 == " "}.map(String.init)
+var userOperator = ""
+var numOne: Double
+var numTwo: Double
 
-
-for (index, value) in userInput.enumerated() {
-    if index == 0 {
-        num1 = String(value)
-    }
-    if index == 4 {
-        num2 = String(value)
-    }
-}
-
-var tupleOne = Double(num1)
-var tupleTwo = Double(num2)
-
-var myDictionary = [myStringValue: (tupleOne,tupleTwo)]
-print(myDictionary)
-
-
-class operationsValues {
-    var operateThis: [String: (Double,Double)]
+if let numOne = inputArray?[0], let userOperator = inputArray?[1], let numTwo = inputArray?[2] {
     
-    init(operateThis: [String: (Double,Double)]) {
-        self.operateThis = operateThis
-    }
-    
-    func gimmeResult() -> Double {
-        var output = Double()
+    if let numOne = Double(numOne), let numTwo = Double(numTwo)  {
         
-        for (key,value) in operateThis {
+        let myDictionary = [userOperator: (numOne,numTwo)]
+        
+        class operationsValues {
+            var operateThis: [String: (Double,Double)]
             
-            switch key {
-                
-            case "+":
-                output = (value.0 + value.1)
-            case "-":
-                output = (value.0 - value.1)
-            case "*":
-                output = (value.0 * value.1)
-            case "/":
-                output = (value.0 / value.1)
-                
-            default:
-                output = 0.0
+            init(operateThis: [String: (Double,Double)]) {
+                self.operateThis = operateThis
             }
             
+            func gimmeResult() {
+                
+                for (key,value) in operateThis {
+                    
+                    switch key {
+                        
+                    case "+":
+                        print(value.0 + value.1)
+                    case "-":
+                        print(value.0 - value.1)
+                    case "*":
+                        print(value.0 * value.1)
+                    case "/":
+                        print(value.0 / value.1)
+                        
+                    default:
+                        print("You can only use +, *, -, / as operators. Thank you!")
+                    }
+                    
+                }
+            
+            }
+    
         }
-        return output
+        
+        let myTest = operationsValues(operateThis: myDictionary)
+        myTest.gimmeResult()
     }
     
 }
 
-let myTest = operationsValues(operateThis: myDictionary as! [String : (Double, Double)])
-print(myTest.gimmeResult())
+
